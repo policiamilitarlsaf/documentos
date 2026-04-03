@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Manual del Piloto · Fuerza Aérea</title>
+  <title>Reglamento Interno · Fuerza Aérea</title>
   <style>
     * {
       margin: 0;
@@ -46,7 +46,7 @@
       height: auto;
       background: #f5f7fc;
       position: relative;
-      padding: 8mm 10mm 8mm 10mm;
+      padding: 8mm 12mm 8mm 12mm;
       display: flex;
       flex-direction: column;
       page-break-after: always;
@@ -58,7 +58,6 @@
       background-size: 60px 60px;
     }
 
-    /* Para impresión, mantener saltos de página */
     @media print {
       body {
         background: white;
@@ -91,19 +90,20 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 3mm;
+      margin-bottom: 4mm;
       border-bottom: 2px solid #c4a747;
-      padding-bottom: 2mm;
+      padding-bottom: 3mm;
       flex-shrink: 0;
     }
     .logo-airforce {
-      height: 42px;
+      height: 40px;
       width: auto;
       pointer-events: none;
+      object-fit: contain;
     }
     .header-title {
       font-family: 'Oswald', sans-serif;
-      font-size: 15pt;
+      font-size: 14pt;
       color: #1f6392;
       letter-spacing: 1px;
       text-transform: uppercase;
@@ -120,9 +120,9 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-      margin-top: 4mm;
+      margin-top: 5mm;
       border-top: 1px dashed #c4a747;
-      padding-top: 2mm;
+      padding-top: 3mm;
       font-family: 'Oswald', sans-serif;
       color: #5a7d9a;
       font-size: 9pt;
@@ -139,14 +139,14 @@
     .section-title {
       font-family: 'Oswald', sans-serif;
       font-weight: 700;
-      font-size: 24pt;
+      font-size: 22pt;
       text-transform: uppercase;
       color: #1f4b6e;
-      border-left: 10px solid #c4a747;
+      border-left: 8px solid #c4a747;
       padding-left: 12px;
-      margin: 2mm 0 3mm 0;
+      margin: 2mm 0 4mm 0;
       border-bottom: 2px solid #c4a747;
-      padding-bottom: 2px;
+      padding-bottom: 4px;
     }
 
     .subsection-title {
@@ -154,33 +154,33 @@
       font-weight: 600;
       font-size: 16pt;
       color: #1f6392;
-      margin: 2mm 0 1.5mm 0;
+      margin: 3mm 0 2mm 0;
       border-left: 5px solid #c4a747;
       padding-left: 10px;
     }
 
     .text-block {
       background: white;
-      border-radius: 12px;
-      padding: 2.5mm 3.5mm;
-      margin-bottom: 2.5mm;
+      border-radius: 10px;
+      padding: 3mm 4mm;
+      margin-bottom: 3mm;
       box-shadow: 0 1px 4px rgba(0,0,0,0.05);
       border: 1px solid #e2ecf5;
     }
 
     .info-label {
-      font-size: 9pt;
+      font-size: 9.5pt;
       font-weight: 700;
       text-transform: uppercase;
       color: #2c7aa0;
       letter-spacing: 0.5px;
-      margin-bottom: 1.5mm;
+      margin-bottom: 2mm;
       display: block;
     }
 
     .info-text {
       font-size: 10.5pt;
-      line-height: 1.35;
+      line-height: 1.4;
       color: #1f3e54;
       text-align: justify;
     }
@@ -188,62 +188,84 @@
     .highlight-box {
       background: #fefcf5;
       border-left: 4px solid #c4a747;
-      padding: 2mm 2.5mm;
-      margin: 2mm 0;
+      padding: 3mm 4mm;
+      margin: 2.5mm 0;
       border-radius: 8px;
     }
 
-    .airport-diagram {
-      width: 100%;
-      margin: 1mm 0 3mm;
+    /* cuadrícula de rangos - completamente responsiva y sin desbordes */
+    .rank-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+      gap: 6mm 4mm;
+      margin: 5mm 0 4mm;
+    }
+    .rank-item {
       text-align: center;
-      background: #fff;
-      border-radius: 16px;
-      padding: 4mm;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      border: 1px solid #d4e0ea;
-    }
-    
-    .airport-diagram img {
-      max-width: 100%;
-      width: auto;
-      height: auto;
-      object-fit: contain;
+      background: white;
       border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+      padding: 3mm 2mm;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      border: 1px solid #e0ebf2;
+      transition: all 0.1s ease;
+    }
+    .rank-item img {
+      max-width: 100%;
+      height: auto;
+      max-height: 55px;
+      width: auto;
+      object-fit: contain;
+      margin-bottom: 3px;
       pointer-events: none;
-      -webkit-user-drag: none;
     }
-    
-    .diagram-large {
-      max-height: 400px !important;
-      width: auto !important;
-      max-width: 100% !important;
-      object-fit: contain !important;
+    .rank-name {
+      font-weight: 700;
+      font-size: 10pt;
+      margin-top: 4px;
+      color: #1f4b6e;
     }
-    
+    .rank-code {
+      font-size: 9pt;
+      color: #5f7f9e;
+      font-family: monospace;
+      font-weight: 500;
+    }
+
+    .article-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 15pt;
+      font-weight: 600;
+      color: #1f6392;
+      margin: 5mm 0 2mm 0;
+      background: rgba(196, 167, 71, 0.1);
+      padding: 2mm 6px;
+      border-radius: 8px;
+    }
+
     .cover-logos {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 18mm;
-      margin: 8mm 0 12mm;
+      gap: 15mm;
+      margin: 6mm 0 10mm;
       flex-wrap: wrap;
     }
     .cover-logos img {
-      height: 85px;
+      height: 70px;
       width: auto;
       pointer-events: none;
+      object-fit: contain;
     }
     .cover-title {
       text-align: center;
-      margin-top: 8mm;
+      margin-top: 6mm;
     }
     .cover-title h1 {
       font-family: Oswald;
-      font-size: 52pt;
+      font-size: 42pt;
       margin: 3mm 0;
       color: #1f4b6e;
+      letter-spacing: 2px;
     }
     
     .golden-rule {
@@ -257,7 +279,7 @@
     
     .signature-box {
       border: 2px solid #c4a747;
-      width: 75mm;
+      width: 70mm;
       margin: 8mm auto 5mm;
       padding: 5mm;
       text-align: center;
@@ -284,13 +306,13 @@
       -webkit-user-select: none;
     }
 
-    /* Estilo para imágenes pequeñas en tablas */
     .inline-img {
       max-width: 100%;
       margin: 2mm 0;
       border-radius: 8px;
     }
     
+    /* tablas auxiliares */
     .metar-table {
       width: 100%;
       border-collapse: collapse;
@@ -302,183 +324,226 @@
       border: 1px solid #d4e0ea;
       background: white;
     }
+
+    /* Ajuste para evitar cualquier desborde horizontal */
+    img, svg {
+      max-width: 100%;
+      height: auto;
+    }
+    .page-content {
+      overflow-x: hidden;
+    }
   </style>
   <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="manual" id="manualContainer">
-  <!-- El contenido se generará dinámicamente con JavaScript para paginado automático -->
-</div>
+<div class="manual" id="manualContainer"></div>
 
 <script>
     // ============================================
-    // DEFINICIÓN DE TODO EL CONTENIDO (SECCIONES)
+    // REGLAMENTO INTERNO · CONTENIDO UNIFORME
     // ============================================
-    // Cada sección es un bloque que se insertará en las páginas
-    // El sistema automáticamente distribuirá estos bloques en páginas de altura fija
-    
     const contentSections = [];
     
-    // Helper para agregar secciones fácilmente
     function addSection(htmlContent, isPageBreak = false) {
         contentSections.push({ html: htmlContent, forcePageBreak: isPageBreak });
     }
     
-    // ========== PÁGINA 1 - PORTADA ==========
+    // ========== PORTADA ==========
     addSection(`
         <div class="cover-logos">
-            <img src="https://i.imgur.com/GfmYqNX.png" alt="Air Force">
-            <img src="https://i.imgur.com/wioFUxA.png" alt="AETC">
+            <img src="https://i.imgur.com/GfmYqNX.png" alt="Air Force Seal" style="height:75px;">
+            <img src="https://i.imgur.com/wioFUxA.png" alt="AETC" style="height:75px;">
         </div>
         <div class="cover-title">
-            <h1>MANUAL DEL PILOTO</h1>
+            <h1>REGLAMENTO INTERNO</h1>
             <div style="height: 2px; background: #c4a747; width: 60%; margin: 5mm auto;"></div>
-            <p style="font-size: 15pt; margin-top: 8mm;"><span style="background: #1f4b6e; color: white; padding: 4px 20px; border-radius: 40px;">ATC · FORMACIÓN AERONÁUTICA</span></p>
-            <p style="font-size: 12pt; margin-top: 8mm;">Fase de Tierra • Conocimiento Fundamental • Seguridad Operacional</p>
+            <p style="font-size: 14pt; margin-top: 8mm;"><span style="background: #1f4b6e; color: white; padding: 4px 20px; border-radius: 40px;">AERO GUARDIANS SQUADRON</span></p>
+            <p style="font-size: 12pt; margin-top: 8mm;">Normas, principios y organización de la unidad de élite</p>
+            <p style="font-size: 10pt; margin-top: 12mm; color:#2c7aa0;">Edición Oficial · Comando de Educación y Doctrina Aérea</p>
         </div>
     `, true);
     
-    // ========== PÁGINA 2 - Introducción Aero Guardians Squadron ==========
+    // ========== REGLAMENTO INTERNO · MISIÓN Y VALORES ==========
     addSection(`
-        <div class="section-title">Reglamento Interno</div>
+        <div class="section-title">Fundamentos del Escuadrón</div>
         <div class="text-block">
-            <span class="info-label">✈️ INTRODUCCIÓN AL AERO GUARDIANS SQUADRON</span>
-            <div class="info-text">El Aero Guardians Squadron es una unidad de élite de la Fuerza Aérea de los Estados Unidos, concebida para integrar en una sola estructura cuatro pilares fundamentales de la aviación moderna: acrobacias aéreas de alto rendimiento, logística integral de aeronaves, ensayos aeroespaciales avanzados y control de tráfico aéreo militar (ATC).<br><br>
-            El escuadrón tiene como objetivo proyectar poder aéreo, innovación tecnológica y excelencia operativa, consolidándose como una fuerza multifuncional capaz de operar en escenarios tanto aéreos como aeroespaciales.</div>
+            <span class="info-label">✈️ AERO GUARDIANS SQUADRON</span>
+            <div class="info-text">El Aero Guardians Squadron es una unidad de élite de la Fuerza Aérea de los Estados Unidos, concebida para integrar cuatro pilares esenciales: acrobacias aéreas de alto rendimiento, logística integral de aeronaves, ensayos aeroespaciales avanzados y control de tráfico aéreo militar (ATC). Este reglamento interno establece las normas, valores y procedimientos que rigen la conducta de todos sus miembros.</div>
         </div>
         <div class="subsection-title">Misión</div>
         <div class="highlight-box">
-            Garantizar la superioridad aérea y aeroespacial mediante la ejecución de maniobras acrobáticas de precisión, el soporte logístico y mantenimiento avanzado de aeronaves, la conducción de ensayos experimentales de carácter aeroespacial y la provisión de servicios de control de tráfico aéreo militar con altos estándares de seguridad y eficacia.
+            <div class="info-text">Garantizar la superioridad aérea y aeroespacial mediante la ejecución de maniobras de precisión, soporte logístico avanzado, ensayos experimentales y servicios de control de tráfico aéreo militar con los más altos estándares de seguridad y eficacia.</div>
         </div>
         <div class="subsection-title">Visión</div>
         <div class="highlight-box">
-            Convertirse en el escuadrón insignia de innovación y excelencia de la Fuerza Aérea, liderando en exhibiciones aéreas, soporte logístico de última generación, proyectos aeroespaciales de vanguardia y operaciones de gestión del espacio aéreo militar.
+            <div class="info-text">Convertirse en el escuadrón insignia de innovación y excelencia de la Fuerza Aérea, liderando en exhibiciones aéreas, soporte logístico de última generación, proyectos aeroespaciales de vanguardia y gestión del espacio aéreo militar.</div>
         </div>
-        <div class="subsection-title">Los cuatro pilares fundamentales</div>
+        <div class="subsection-title">Valores fundamentales</div>
         <div class="text-block">
             <div class="info-text">
-                <strong>• Acrobacias aéreas de alto rendimiento:</strong> Demostración de capacidades extremas de maniobrabilidad y precisión en vuelo.<br>
-                <strong>• Logística integral de aeronaves:</strong> Soporte completo en mantenimiento, abastecimiento y disponibilidad operativa.<br>
-                <strong>• Ensayos aeroespaciales avanzados:</strong> Investigación y desarrollo de tecnologías de vanguardia para aplicaciones aeroespaciales.<br>
-                <strong>• Control de tráfico aéreo militar (ATC):</strong> Gestión segura y eficiente del espacio aéreo en operaciones militares.
+                <strong>⚡ Disciplina:</strong> Cumplimiento irrestricto de procedimientos.<br>
+                <strong>⚡ Honor:</strong> Representar con orgullo a la Fuerza Aérea y la nación.<br>
+                <strong>⚡ Excelencia:</strong> Superación constante en cada misión.<br>
+                <strong>⚡ Trabajo en equipo:</strong> Cohesión entre pilotos, técnicos y controladores.<br>
+                <strong>⚡ Innovación:</strong> Desarrollo de nuevas tácticas y tecnologías.
             </div>
         </div>
-        <div class="highlight-box">
-            <span class="info-label">📌 PROPÓSITO DEL ESCUADRÓN</span>
-            <div class="info-text">Proyectar poder aéreo, innovación tecnológica y excelencia operativa como una fuerza multifuncional capaz de operar en escenarios tanto aéreos como aeroespaciales, consolidándose como unidad de élite dentro de la Fuerza Aérea de los Estados Unidos.</div>
-        </div>
-        <div class="info-text"><strong>Ejemplo aplicado:</strong> Un miembro del Aero Guardians Squadron debe estar capacitado no solo para ejecutar maniobras acrobáticas de precisión, sino también para comprender los sistemas logísticos que mantienen operativas las aeronaves, participar en ensayos experimentales y coordinarse con control de tráfico aéreo militar para garantizar operaciones seguras y eficaces en todo momento.</div>
-    `);
-  // ========== PÁGINA 3 - Valores, Principios y Roles ==========
-    addSection(`
-        <div class="section-title">Reglamento Interno</div>
-        <div class="text-block">
-            <span class="info-label">⭐ VALORES Y PRINCIPIOS DEL AERO GUARDIANS SQUADRON</span>
-            <div class="info-text">El Aero Guardians Squadron se rige por un conjunto de valores fundamentales que guían cada acción y decisión de sus miembros, asegurando la excelencia operativa y la cohesión como unidad de élite.</div>
-        </div>
-        <div class="subsection-title">Valores Fundamentales</div>
-        <div class="highlight-box">
-            <strong>🔹 Disciplina:</strong> Cumplimiento estricto de normas y procedimientos.<br><br>
-            <strong>🔹 Honor:</strong> Representar con orgullo la Fuerza Aérea y la nación.<br><br>
-            <strong>🔹 Excelencia:</strong> Superación constante en cada misión.<br><br>
-            <strong>🔹 Trabajo en equipo:</strong> Cohesión entre pilotos, técnicos y personal de apoyo.<br><br>
-            <strong>🔹 Innovación:</strong> Desarrollo de nuevas tácticas y tecnologías.
-        </div>
-        <div class="subsection-title">Roles Principales</div>
-        <div class="text-block">
-            <div class="info-text">
-                <strong>✈️ Acrobacias Aéreas:</strong> Ejecución de maniobras de precisión para exhibiciones y entrenamiento avanzado.<br><br>
-                <strong>🔧 Logística de Aeronaves:</strong> Mantenimiento, reabastecimiento y preparación de flotas.<br><br>
-                <strong>🚀 Ensayos Aeroespaciales (Apollo):</strong> Pruebas de aeronaves experimentales y proyectos aeroespaciales.<br><br>
-                <strong>📡 ATC (Air Traffic Control):</strong> Gestión del espacio aéreo militar y apoyo a operaciones conjuntas.
-            </div>
-        </div>
-        <div class="highlight-box">
-            <span class="info-label">📌 COMPROMISO DEL ESCUADRÓN</span>
-            <div class="info-text">Cada miembro del Aero Guardians Squadron, sin importar su rol específico, se compromete a vivir estos valores diariamente, entendiendo que la excelencia individual se traduce en éxito colectivo. La integración entre acrobacias, logística, ensayos aeroespaciales y control de tráfico aéreo forma la base de una unidad verdaderamente multifuncional.</div>
-        </div>
-        <div class="info-text"><strong>Ejemplo aplicado:</strong> Un piloto de acrobacias debe trabajar en estrecha coordinación con logística para garantizar que la aeronave esté en condiciones óptimas, con ensayos aeroespaciales para implementar nuevas tecnologías y con ATC para ejecutar maniobras en espacio aéreo controlado, todo ello bajo los principios de disciplina, honor, excelencia, trabajo en equipo e innovación.</div>
-    `);
-  // ========== PÁGINA 4 - Escalafón de la Fuerza Aérea ==========
-    addSection(`
-        <div class="section-title">Manual de Pilotos</div>
-        <div class="text-block">
-            <span class="info-label">🎖️ ESCALAFÓN DE LA FUERZA AÉREA</span>
-            <div class="info-text">La jerarquía militar en el Aero Guardians Squadron sigue la estructura de rangos de la Fuerza Aérea de los Estados Unidos, estableciendo una clara línea de autoridad, responsabilidad y liderazgo para todos sus miembros.</div>
-        </div>
-        
-        <div class="article-title">Escalafón de Oficiales (US Air Force)</div>
-        <div class="info-text">Los oficiales de la Fuerza Aérea conforman el cuerpo de liderazgo estratégico y táctico. Rangos e insignias:</div>
-        <div class="rank-grid">
-            <div class="rank-item"><img src="https://i.imgur.com/Z7UrqZR.png"><div class="rank-name">Teniente Segundo</div><div class="rank-code">O-1</div></div>
-            <div class="rank-item"><img src="https://i.imgur.com/PbQpOhy.png"><div class="rank-name">Teniente Primero</div><div class="rank-code">O-2</div></div>
-            <div class="rank-item"><img src="https://i.imgur.com/3gnlf6R.png"><div class="rank-name">Capitán</div><div class="rank-code">O-3</div></div>
-            <div class="rank-item"><img src="https://i.imgur.com/wSpJHRv.png"><div class="rank-name">Mayor</div><div class="rank-code">O-4</div></div>
-            <div class="rank-item"><img src="https://i.imgur.com/zimQ6Gm.png"><div class="rank-name">Teniente Coronel</div><div class="rank-code">O-5</div></div>
-            <div class="rank-item"><img src="https://i.imgur.com/zIAp0ji.png"><div class="rank-name">Coronel</div><div class="rank-code">O-6</div></div>
-            <div class="rank-item"><img src="https://i.imgur.com/fL6NKVI.png"><div class="rank-name">Brigadier General</div><div class="rank-code">O-7</div></div>
-            <div class="rank-item"><img src="https://i.imgur.com/VWQpqSJ.png"><div class="rank-name">Mayor General</div><div class="rank-code">O-8</div></div>
-            <div class="rank-item"><img src="https://i.imgur.com/7mzIHBW.png"><div class="rank-name">Teniente General</div><div class="rank-code">O-9</div></div>
-            <div class="rank-item"><img src="https://i.imgur.com/YzdiuVz.png"><div class="rank-name">General</div><div class="rank-code">O-10</div></div>
-        </div>
-
-        <div class="article-title">Escalafón de Suboficiales (US Air Force)</div>
-        <div class="info-text">Suboficiales de la Fuerza Aérea:</div>
-        <div class="rank-grid">
-            <div class="rank-item"><img src="https://i.imgur.com/bskM1y0.png"><div class="rank-name">Sargento de Personal</div><div class="rank-code">E-5</div></div>
-            <div class="rank-item"><img src="https://i.imgur.com/GHVRcFR.png"><div class="rank-name">Sargento Técnico</div><div class="rank-code">E-6</div></div>
-            <div class="rank-item"><img src="https://i.imgur.com/lRq48UN.png"><div class="rank-name">Sargento Maestre</div><div class="rank-code">E-7</div></div>
-            <div class="rank-item"><img src="https://i.imgur.com/7a7FRvs.png"><div class="rank-name">Sargento Maestre Mayor</div><div class="rank-code">E-8</div></div>
-            <div class="rank-item"><img src="https://i.imgur.com/ocSFYgu.png"><div class="rank-name">Sargento Maestre de la Fuerza Aérea</div><div class="rank-code">E-9</div></div>
-            <div class="rank-item"><img src="https://i.imgur.com/6V94YHP.png"><div class="rank-name">Suboficial Mayor de la Fuerza Aérea</div><div class="rank-code">E-10</div></div>
-        </div>
-
-        <div class="article-title">Escalafón de Tropa (US Air Force)</div>
-        <div class="info-text">Personal alistado de la Fuerza Aérea:</div>
-        <div class="rank-grid">
-            <div class="rank-item"><img src="https://i.imgur.com/pEwQxQg.png"><div class="rank-name">Aviador</div><div class="rank-code">E-2</div></div>
-            <div class="rank-item"><img src="https://i.imgur.com/OVq2YgY.png"><div class="rank-name">Aviador de Primera</div><div class="rank-code">E-3</div></div>
-            <div class="rank-item"><img src="https://i.imgur.com/rbU3o16.png"><div class="rank-name">Aviador Mayor</div><div class="rank-code">E-4</div></div>
-        </div>
-
-        <div class="highlight-box">
-            <span class="info-label">📌 RESPONSABILIDAD Y LIDERAZGO</span>
-            <div class="info-text">Cada rango dentro del Aero Guardians Squadron conlleva responsabilidades específicas. Desde los aviadores que inician su carrera hasta los generales que lideran la unidad, todos los miembros trabajan bajo un mismo código de honor y excelencia, comprendiendo que la disciplina y el respeto por la cadena de mando son fundamentales para el éxito de las operaciones.</div>
-        </div>
-        <div class="info-text"><strong>Ejemplo aplicado:</strong> Un Teniente Segundo (O-1) recién incorporado al escuadrón será guiado por Sargentos Maestres (E-7) y Capitanes (O-3) en sus primeras misiones, aprendiendo los protocolos mientras asume gradualmente mayores responsabilidades hasta alcanzar posiciones de liderazgo estratégico.</div>
+        <div class="info-text"><strong>Nota reglamentaria:</strong> Todo miembro del escuadrón se compromete a respetar estos valores. La violación reiterada será sujeta a procesos disciplinarios según el código de conducta militar.</div>
     `);
     
-    // ========== PÁGINA 14 - Cierre ==========
+    // ========== PILARES Y ROLES ==========
     addSection(`
-        <div style="text-align: center; margin-top: 20mm;">
-            <div style="font-size: 48pt; font-family: Oswald; color: #1f6392;">★ ★ ★</div>
-            <p style="font-size: 28pt; font-family: Oswald; margin: 4mm 0 2mm; color: #1f4b6e;">FIN DEL MANUAL</p>
-            <p style="font-size: 14pt; max-width: 140mm; margin: 0 auto; font-style: italic; color: #2c7aa0;">"El conocimiento teórico es la base de un vuelo seguro"</p>
-            <div class="signature-box">
-                <p style="font-family: Oswald; font-size: 15pt; margin-bottom: 3mm;">Alto Mando Aéreo</p>
-                <img src="https://i.imgur.com/gyQC992.png" alt="Firma" style="max-width: 60mm; height: auto; display: block; margin: 0 auto;">
-                <p style="font-family: Oswald; font-size: 12pt;">General de División</p>
-                <p style="font-size: 8pt;">Comando de Educación y Doctrina Aérea</p>
+        <div class="section-title">Pilares y Roles</div>
+        <div class="text-block">
+            <span class="info-label">⚙️ ESTRUCTURA MULTIFUNCIONAL</span>
+            <div class="info-text">
+                <strong>✈️ Acrobacias aéreas:</strong> Ejecución de maniobras de precisión en exhibiciones y entrenamiento táctico.<br>
+                <strong>🔧 Logística de aeronaves:</strong> Mantenimiento, abastecimiento y disponibilidad operativa 24/7.<br>
+                <strong>🚀 Ensayos aeroespaciales (Apollo):</strong> Pruebas de aeronaves experimentales y proyectos de nueva generación.<br>
+                <strong>📡 Control de tráfico aéreo (ATC):</strong> Gestión del espacio aéreo militar, coordinación y seguridad de vuelo.
             </div>
-            <div class="small-print">Este documento es de uso oficial exclusivo para formación de pilotos.<br>Prohibida su reproducción total o parcial.</div>
+        </div>
+        <div class="highlight-box">
+            <span class="info-label">📌 INTEGRACIÓN OPERACIONAL</span>
+            <div class="info-text">Todos los miembros deben comprender la interdependencia de los cuatro pilares. Un piloto de acrobacias coordinará con logística para el estado de la aeronave, con ensayos para implementar nuevas tecnologías y con ATC para operar en espacio controlado, manteniendo siempre los principios de disciplina y excelencia.</div>
+        </div>
+        <div class="subsection-title">Compromiso de conducta</div>
+        <div class="text-block">
+            <div class="info-text">Cada integrante del Aero Guardians Squadron actuará bajo la cadena de mando establecida, respetando las órdenes de superiores, fomentando el respeto mutuo y protegiendo la información clasificada. El incumplimiento de estas normas será documentado y evaluado por el Consejo de Ética del escuadrón.</div>
+        </div>
+    `);
+    
+    // ========== ESCALAFÓN DE LA FUERZA AÉREA (TAMAÑOS UNIFORMES) ==========
+    addSection(`
+        <div class="section-title">Jerarquía y Escalafón</div>
+        <div class="text-block">
+            <span class="info-label">🎖️ RANGOS US AIR FORCE</span>
+            <div class="info-text">El Aero Guardians Squadron adopta la estructura jerárquica oficial de la Fuerza Aérea de los Estados Unidos. Cada rango define responsabilidades claras y líneas de autoridad.</div>
+        </div>
+        
+        <div class="article-title">Oficiales (Officer Corps)</div>
+        <div class="rank-grid">
+            <div class="rank-item"><img src="https://i.imgur.com/Z7UrqZR.png" alt="O-1"><div class="rank-name">Teniente Segundo</div><div class="rank-code">O-1</div></div>
+            <div class="rank-item"><img src="https://i.imgur.com/PbQpOhy.png" alt="O-2"><div class="rank-name">Teniente Primero</div><div class="rank-code">O-2</div></div>
+            <div class="rank-item"><img src="https://i.imgur.com/3gnlf6R.png" alt="O-3"><div class="rank-name">Capitán</div><div class="rank-code">O-3</div></div>
+            <div class="rank-item"><img src="https://i.imgur.com/wSpJHRv.png" alt="O-4"><div class="rank-name">Mayor</div><div class="rank-code">O-4</div></div>
+            <div class="rank-item"><img src="https://i.imgur.com/zimQ6Gm.png" alt="O-5"><div class="rank-name">Teniente Coronel</div><div class="rank-code">O-5</div></div>
+            <div class="rank-item"><img src="https://i.imgur.com/zIAp0ji.png" alt="O-6"><div class="rank-name">Coronel</div><div class="rank-code">O-6</div></div>
+            <div class="rank-item"><img src="https://i.imgur.com/fL6NKVI.png" alt="O-7"><div class="rank-name">Brigadier General</div><div class="rank-code">O-7</div></div>
+            <div class="rank-item"><img src="https://i.imgur.com/VWQpqSJ.png" alt="O-8"><div class="rank-name">Mayor General</div><div class="rank-code">O-8</div></div>
+            <div class="rank-item"><img src="https://i.imgur.com/7mzIHBW.png" alt="O-9"><div class="rank-name">Teniente General</div><div class="rank-code">O-9</div></div>
+            <div class="rank-item"><img src="https://i.imgur.com/YzdiuVz.png" alt="O-10"><div class="rank-name">General</div><div class="rank-code">O-10</div></div>
+        </div>
+
+        <div class="article-title">Suboficiales (NCO Corps)</div>
+        <div class="rank-grid">
+            <div class="rank-item"><img src="https://i.imgur.com/bskM1y0.png" alt="E-5"><div class="rank-name">Sargento de Personal</div><div class="rank-code">E-5</div></div>
+            <div class="rank-item"><img src="https://i.imgur.com/GHVRcFR.png" alt="E-6"><div class="rank-name">Sargento Técnico</div><div class="rank-code">E-6</div></div>
+            <div class="rank-item"><img src="https://i.imgur.com/lRq48UN.png" alt="E-7"><div class="rank-name">Sargento Maestre</div><div class="rank-code">E-7</div></div>
+            <div class="rank-item"><img src="https://i.imgur.com/7a7FRvs.png" alt="E-8"><div class="rank-name">Sargento Maestre Mayor</div><div class="rank-code">E-8</div></div>
+            <div class="rank-item"><img src="https://i.imgur.com/ocSFYgu.png" alt="E-9"><div class="rank-name">Sargento Maestre de la Fuerza Aérea</div><div class="rank-code">E-9</div></div>
+            <div class="rank-item"><img src="https://i.imgur.com/6V94YHP.png" alt="E-10"><div class="rank-name">Suboficial Mayor de la Fuerza Aérea</div><div class="rank-code">E-10</div></div>
+        </div>
+
+        <div class="article-title">Tropa Alistada (Enlisted)</div>
+        <div class="rank-grid">
+            <div class="rank-item"><img src="https://i.imgur.com/pEwQxQg.png" alt="E-2"><div class="rank-name">Aviador</div><div class="rank-code">E-2</div></div>
+            <div class="rank-item"><img src="https://i.imgur.com/OVq2YgY.png" alt="E-3"><div class="rank-name">Aviador de Primera</div><div class="rank-code">E-3</div></div>
+            <div class="rank-item"><img src="https://i.imgur.com/rbU3o16.png" alt="E-4"><div class="rank-name">Aviador Mayor</div><div class="rank-code">E-4</div></div>
+        </div>
+
+        <div class="highlight-box">
+            <span class="info-label">📌 CADENA DE MANDO</span>
+            <div class="info-text">El respeto por los rangos y la cadena de mando es obligatorio. Todo miembro deberá dirigirse a sus superiores según el protocolo militar, fomentando un ambiente de liderazgo profesional. Los ascensos se basarán en méritos, evaluación continua y cumplimiento de estándares de vuelo/logísticos.</div>
+        </div>
+    `);
+    
+    // ========== NORMAS DE SEGURIDAD Y PROCEDIMIENTO ==========
+    addSection(`
+        <div class="section-title">Normas de Seguridad</div>
+        <div class="text-block">
+            <span class="info-label">🛡️ REGLAMENTO DE VUELO Y TIERRA</span>
+            <div class="info-text">La seguridad operacional es prioridad absoluta dentro del Aero Guardians Squadron. Todo el personal debe cumplir estrictamente los procedimientos estandarizados, reportar condiciones peligrosas y utilizar el equipo de protección correspondiente según el área de trabajo.</div>
+        </div>
+        <div class="subsection-title">Prohibiciones generales</div>
+        <div class="highlight-box">
+            <div class="info-text">
+                • Queda prohibido el uso de dispositivos móviles no autorizados en zonas de vuelo y control.<br>
+                • Ningún miembro podrá manipular sistemas aeronáuticos sin la debida certificación.<br>
+                • El consumo de alcohol o sustancias prohibidas durante el servicio conllevará baja inmediata.<br>
+                • No se tolerará ninguna acción que comprometa la seguridad de las operaciones aéreas.
+            </div>
+        </div>
+        <div class="subsection-title">Procedimiento ante emergencias</div>
+        <div class="text-block">
+            <div class="info-text">Ante cualquier emergencia aérea o terrestre, se activará el protocolo de respuesta inmediata: notificar a Torre de Control, evacuar zonas de riesgo según plan de contingencia y reportar al oficial de guardia. Todos los miembros recibirán entrenamiento semestral en simulacros.</div>
+        </div>
+        <div class="info-text"><strong>Sanción por incumplimiento:</strong> Las faltas leves serán sancionadas con apercibimiento escrito; las graves, con suspensión temporal; y las muy graves, con expulsión del escuadrón y posible baja de la Fuerza Aérea.</div>
+    `);
+    
+    // ========== DERECHOS Y DEBERES ==========
+    addSection(`
+        <div class="section-title">Derechos y Deberes</div>
+        <div class="text-block">
+            <span class="info-label">⚖️ CÓDIGO DE CONDUCTA INTERNO</span>
+            <div class="info-text"><strong>Deberes:</strong> Todo miembro debe cumplir con las órdenes de sus superiores, mantener en óptimas condiciones su equipo y aeronave asignada, participar en entrenamientos periódicos y custodiar la información clasificada. Asimismo, velar por el buen nombre del escuadrón dentro y fuera de la base.</div>
+        </div>
+        <div class="text-block">
+            <div class="info-text"><strong>Derechos:</strong> Recibir formación continua, ser evaluado justamente, gozar de períodos de descanso reglamentarios y acceder a canales formales para presentar sugerencias o quejas sin represalias. Todo derecho está sujeto al cumplimiento de las obligaciones militares.</div>
+        </div>
+        <div class="highlight-box">
+            <span class="info-label">📢 CANAL DE DENUNCIAS</span>
+            <div class="info-text">Se habilita la Oficina de Asuntos Internos del escuadrón para recibir reportes confidenciales sobre violaciones al reglamento. El anonimato será garantizado en todos los casos.</div>
+        </div>
+        <div class="info-text"><strong>Ejemplo práctico:</strong> Un Sargento Técnico que detecte una irregularidad en el mantenimiento de una aeronave tiene el deber de reportarla de inmediato a su superior directo o al oficial de seguridad. No hacerlo constituye falta grave.</div>
+    `);
+    
+    // ========== RÉGIMEN DISCIPLINARIO ==========
+    addSection(`
+        <div class="section-title">Régimen Disciplinario</div>
+        <div class="text-block">
+            <span class="info-label">⚙️ FALTAS Y SANCIONES</span>
+            <div class="info-text"><strong>Faltas leves:</strong> Retrasos injustificados, descuido leve en uniforme, omisión de reportes menores. Sanción: amonestación verbal o escrita.</div>
+            <div class="info-text" style="margin-top: 2mm;"><strong>Faltas graves:</strong> Desobediencia parcial, negligencia en tareas operativas, divulgación no autorizada de datos no clasificados. Sanción: suspensión de hasta 15 días y pérdida de privilegios.</div>
+            <div class="info-text" style="margin-top: 2mm;"><strong>Faltas muy graves:</strong> Actos de insubordinación, sabotaje, filtración de información secreta, violencia o acoso. Sanción: expulsión inmediata del escuadrón y remisión al Tribunal Militar.</div>
+        </div>
+        <div class="subsection-title">Procedimiento sancionador</div>
+        <div class="highlight-box">
+            <div class="info-text">Todo proceso disciplinario será iniciado mediante informe firmado por un superior directo. Se concederá al implicado un plazo de 48 horas para presentar descargos. El Consejo de Disciplina emitirá resolución en un plazo máximo de 10 días hábiles.</div>
+        </div>
+        <div class="info-text">El presente reglamento entra en vigor desde su publicación y deroga cualquier normativa interna anterior. Todo miembro debe firmar una declaración de conocimiento al ingresar al escuadrón.</div>
+    `);
+    
+    // ========== CIERRE Y FIRMAS ==========
+    addSection(`
+        <div style="text-align: center; margin-top: 15mm;">
+            <div style="font-size: 42pt; font-family: Oswald; color: #1f6392;">★ ★ ★</div>
+            <p style="font-size: 26pt; font-family: Oswald; margin: 4mm 0 2mm; color: #1f4b6e;">REGLAMENTO INTERNO</p>
+            <p style="font-size: 14pt; max-width: 140mm; margin: 0 auto; font-style: italic; color: #2c7aa0;">"La disciplina y el honor forjan la excelencia aérea"</p>
+            <div class="signature-box">
+                <p style="font-family: Oswald; font-size: 14pt; margin-bottom: 3mm;">Alto Mando Aéreo</p>
+                <img src="https://i.imgur.com/gyQC992.png" alt="Firma oficial" style="max-width: 55mm; height: auto; display: block; margin: 0 auto;">
+                <p style="font-family: Oswald; font-size: 11pt; margin-top: 2mm;">General de División</p>
+                <p style="font-size: 8pt;">Comandante del Aero Guardians Squadron</p>
+            </div>
+            <div class="small-print">Este documento es de uso oficial exclusivo para miembros del escuadrón. Prohibida su reproducción total o parcial.<br>Revisión 2.0 · Vigencia indefinida.</div>
         </div>
     `);
     
     // ============================================
-    // PAGINADO AUTOMÁTICO
+    // PAGINADO AUTOMÁTICO (AJUSTE DE ALTURA PRECISO)
     // ============================================
     function buildPages() {
         const container = document.getElementById('manualContainer');
         container.innerHTML = '';
         
-        const pageHeightMM = 297; // altura total de página en mm
-        const topMargin = 8; // mm
-        const bottomMargin = 8; // mm
-        const headerHeight = 12; // mm aprox (header + footer espacio)
-        const footerHeight = 10; // mm
+        const pageHeightMM = 297;
+        const topMargin = 8;
+        const bottomMargin = 8;
+        const headerHeight = 13; 
+        const footerHeight = 11;
         const availableHeightMM = pageHeightMM - topMargin - bottomMargin - headerHeight - footerHeight;
-        
-        // Convertir mm a píxeles aproximados (1mm ≈ 3.78px a 96dpi)
         const mmToPx = 3.78;
         const maxContentHeightPx = availableHeightMM * mmToPx;
         
@@ -487,12 +552,11 @@
         let currentHeight = 0;
         let pageCounter = 1;
         
-        // Función para medir altura de un elemento temporal
         function measureHeight(html) {
             const temp = document.createElement('div');
             temp.style.position = 'absolute';
             temp.style.visibility = 'hidden';
-            temp.style.width = '190mm'; // ancho de contenido aproximado
+            temp.style.width = '186mm';
             temp.style.padding = '0';
             temp.style.margin = '0';
             temp.style.fontFamily = 'Roboto, sans-serif';
@@ -507,31 +571,27 @@
             const pageDiv = document.createElement('div');
             pageDiv.className = 'page';
             
-            // Header
             const header = document.createElement('div');
             header.className = 'page-header';
             header.innerHTML = `
                 <img src="https://i.imgur.com/GfmYqNX.png" alt="Air Force" class="logo-airforce">
-                <span class="header-title">Manual del Piloto · Fuerza Aérea</span>
+                <span class="header-title">Reglamento Interno · Aero Guardians</span>
                 <img src="https://i.imgur.com/GfmYqNX.png" alt="Air Force" class="logo-airforce" style="opacity:0.8;">
             `;
             
-            // Content
             const content = document.createElement('div');
             content.className = 'page-content';
             
-            // Footer
             const footer = document.createElement('div');
             footer.className = 'page-footer';
             footer.innerHTML = `
-                <span class="footer-note">Fuerza Aérea · Documento Oficial de Formación</span>
+                <span class="footer-note">Fuerza Aérea · Documento Normativo Oficial</span>
                 <span class="page-number">${pageCounter}</span>
             `;
             
             pageDiv.appendChild(header);
             pageDiv.appendChild(content);
             pageDiv.appendChild(footer);
-            
             container.appendChild(pageDiv);
             
             currentPage = pageDiv;
@@ -543,30 +603,20 @@
         }
         
         function addToPage(html) {
-            if (!currentPage) {
-                createNewPage();
-            }
-            
+            if (!currentPage) createNewPage();
             const sectionHeight = measureHeight(html);
-            
-            // Si la sección actual no cabe y ya hay contenido, crear nueva página
-            if (currentHeight + sectionHeight > maxContentHeightPx && currentHeight > 50) {
+            if (currentHeight + sectionHeight > maxContentHeightPx && currentHeight > 30) {
                 createNewPage();
             }
-            
-            // Agregar el contenido
-            const tempDiv = document.createElement('div');
-            tempDiv.innerHTML = html;
-            currentPageContent.appendChild(tempDiv);
+            const wrapper = document.createElement('div');
+            wrapper.innerHTML = html;
+            currentPageContent.appendChild(wrapper);
             currentHeight += sectionHeight;
         }
         
-        // Procesar todas las secciones
         for (let i = 0; i < contentSections.length; i++) {
             const section = contentSections[i];
             addToPage(section.html);
-            
-            // Si es un salto de página forzado, crear nueva página para la siguiente sección
             if (section.forcePageBreak && i < contentSections.length - 1) {
                 createNewPage();
                 currentHeight = 0;
@@ -579,7 +629,7 @@
     // ============================================
     document.addEventListener('contextmenu', function(e) { e.preventDefault(); return false; });
     document.addEventListener('keydown', function(e) {
-        if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) || (e.ctrlKey && (e.key === 'U' || e.key === 'u' || e.key === 'S' || e.key === 's' || e.key === 'P' || e.key === 'p' || e.key === 'A' || e.key === 'a'))) {
+        if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) || (e.ctrlKey && (e.key === 'U' || e.key === 'u' || e.key === 'S' || e.key === 's' || e.key === 'P' || e.key === 'p'))) {
             e.preventDefault(); return false;
         }
         if (e.key === 'ContextMenu' || e.keyCode === 93) { e.preventDefault(); return false; }
@@ -589,11 +639,8 @@
     document.body.addEventListener('copy', function(e) { e.preventDefault(); return false; });
     document.body.addEventListener('cut', function(e) { e.preventDefault(); return false; });
     
-    // Inicializar paginado después de cargar
     window.addEventListener('DOMContentLoaded', function() {
         buildPages();
-        
-        // Bloquear también las imágenes después de generadas
         const allImages = document.querySelectorAll('img');
         allImages.forEach(img => {
             img.addEventListener('contextmenu', function(e) { e.preventDefault(); return false; });
@@ -601,7 +648,7 @@
         });
     });
     
-    console.log('%c🚫 MANUAL DE PILOTO - DOCUMENTO CONFIDENCIAL 🚫', 'color: red; font-size: 14px;');
+    console.log('%c📘 REGLAMENTO INTERNO - DOCUMENTO CONFIDENCIAL 🚫', 'color: #c4a747; font-size: 14px; font-weight: bold;');
 </script>
 </body>
 </html>
